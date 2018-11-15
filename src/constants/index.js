@@ -22,3 +22,10 @@ export const ERROR_MESSAGE = {
     ENTER_USER_AND_PASSWORD: 'Please Enter Username and Password.',
     USER_NOT_EXIST: 'User does not exist.',
 };
+
+export const Constants = {
+    'IS_AUTHENTICATED': 'isAuthenticated',
+    'IS_ADMIN': 'isAdmin',
+    'ADMIN_NAME': 'Luke Skywalker',
+    'ADMIN_PASS': '19BBY',
+};

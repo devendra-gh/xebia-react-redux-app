@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { WebUrl } from '../../../../constants';
 import { fetchLogout } from '../../landing/Login/Actions';
-import { redirectToUrl } from '../../../../utils/Common';
+import { redirectToUrl, clearStorage } from '../../../../utils/Common';
 import Button from '../Button';
 
 class Menu extends Component {
@@ -11,6 +11,7 @@ class Menu extends Component {
     }
 
     onClickHandler = () => {
+        clearStorage();
         this.props.logoutUser();
 
         setTimeout(() => {

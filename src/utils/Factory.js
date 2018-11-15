@@ -20,6 +20,7 @@ export function getInitialLoginState() {
 export function getInitialSearchState() {
     return {
         apiData: [],
+        inputSearch: '',
         isSearched: false
     }
 }

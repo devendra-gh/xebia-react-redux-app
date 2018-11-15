@@ -8,6 +8,7 @@ export default (state = getInitialSearchState(), action) => {
             return {
                 ...state,
                 apiData: action.data,
+                inputSearch: action.inputSearch,
                 isSearched: true,
             };
 

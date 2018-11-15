@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import {WebUrl } from '../../../../constants';
+import { WebUrl, Constants } from '../../../../constants';
+import { getStorageByKey, toBool } from '../../../../utils/Common';
 
 class AuthorizedRoute extends Component {
     constructor(props) {
@@ -9,8 +10,8 @@ class AuthorizedRoute extends Component {
     }
 
     render() {
-        const { login, component: Component,  ...rest } = this.props;
-        let isAuthenticated = login && login.isAuthenticated;
+        const { component: Component,  ...rest } = this.props;
+        let isAuthenticated = toBool(getStorageByKey(Constants.IS_AUTHENTICATED));
 
         return (
             <Route {...rest} render={props => {

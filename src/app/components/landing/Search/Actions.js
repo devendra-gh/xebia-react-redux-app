@@ -3,10 +3,12 @@ import { requestConfig } from '../../../../services'
 import { ACTION_TYPE } from '../../../../constants';
 import { isLoading } from '../../general/Loader/Actions';
 
-export const fetchSearchSuccess = (data) => {
+export const fetchSearchSuccess = (data, inputSearch) => {
     return {
         type: ACTION_TYPE.FETCH_SEARCH_SUCCESS,
         data,
+        inputSearch
+
     }
 };
 
@@ -26,7 +28,7 @@ export function fetchSearch(input) {
                 dispatch(isLoading({'fetchSearchAPI': false}));
 
                 let results = response && response.data && response.data.results || [];
-                dispatch(fetchSearchSuccess(results));
+                dispatch(fetchSearchSuccess(results, input));
             })
             .catch((error) => {
 

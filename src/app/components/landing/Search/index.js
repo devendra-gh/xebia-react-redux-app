@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
+import { Constants } from '../../../../constants';
+import { toBool, getStorageByKey } from '../../../../utils/Common';
 import { fetchSearch, clearSearchData } from './Actions';
 import Loader from '../../general/Loader';
 import TextInputField from '../../general/TextInputField';
@@ -19,13 +21,14 @@ class Search extends Component {
     }
 
     searchHandler = (event) => {
+        const { search: { inputSearch } } = this.props;
         let inputValue = event.target.value || null;
 
-        if(!inputValue) {
+        if(!inputValue || (inputSearch === inputValue)) {
             return;
         }
 
-        const { login: { isAdmin } } = this.props;
+        const isAdmin = toBool(getStorageByKey(Constants.IS_ADMIN));
         this.counter = this.counter + 1;
 
         if (this.counter === 1) {
@@ -99,8 +102,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchSearch: (data) => {
             dispatch(fetchSearch(data))
         },
-        clearSearchData: (data) => {
-            dispatch(clearSearchData(data))
+        clearSearchData: () => {
+            dispatch(clearSearchData())
         }
     };
 };

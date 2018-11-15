@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { requestConfig } from '../../../../services'
-import { ACTION_TYPE, WebUrl } from '../../../../constants';
-import { redirectToUrl } from '../../../../utils/Common';
+import { ACTION_TYPE, WebUrl, Constants } from '../../../../constants';
+import { redirectToUrl, setStorageByKey } from '../../../../utils/Common';
 import { isLoading } from '../../general/Loader/Actions';
 
 export const fetchLoginSuccess = (results, isAuthenticated, isAdmin) => {
@@ -46,8 +46,8 @@ export function fetchLogin(name, password) {
                 dispatch(isLoading({'fetchLoginAPI': false}));
 
                 const results = res && res.data && res.data.results && res.data.results[0];
-                const name = 'Luke Skywalker';
-                const password = '19BBY';
+                const name = Constants.ADMIN_NAME;
+                const password = Constants.ADMIN_PASS;
                 let isAdmin = false;
 
                 if(results && name === results.name && password === results.birth_year) {
@@ -56,8 +56,11 @@ export function fetchLogin(name, password) {
 
                 if (results && results.name && results.birth_year) {
 
+                    setStorageByKey(Constants.IS_AUTHENTICATED, true);
+                    setStorageByKey(Constants.IS_ADMIN, isAdmin);
                     dispatch(fetchLoginSuccess(results, true, isAdmin));
                     dispatch(redirectToUrl(WebUrl.SEARCH_URL));
+
                 } else {
 
                     dispatch(userNotExistError());
