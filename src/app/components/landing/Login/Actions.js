@@ -9,7 +9,8 @@ export const fetchLoginSuccess = (results, isAuthenticated, isAdmin) => {
         type: ACTION_TYPE.FETCH_LOGIN_SUCCESS,
         apiData: results,
         isAuthenticated: isAuthenticated,
-        isAdmin: isAdmin
+        isAdmin: isAdmin,
+        userNotExist: false
     }
 };
 
@@ -17,6 +18,15 @@ export const fetchLoginError = () => {
     return {
         type: ACTION_TYPE.FETCH_LOGIN_ERROR,
         isAuthenticated: false,
+        userNotExist: false
+    }
+};
+
+export const userNotExistError = () => {
+    return {
+        type: ACTION_TYPE.FETCH_LOGIN_ERROR,
+        isAuthenticated: false,
+        userNotExist: true,
     }
 };
 
@@ -50,7 +60,7 @@ export function fetchLogin(name, password) {
                     dispatch(redirectToUrl(WebUrl.SEARCH_URL));
                 } else {
 
-                    dispatch(fetchLoginError());
+                    dispatch(userNotExistError());
                 }
             })
             .catch(err => {

@@ -12,6 +12,7 @@ export function getInitialLoginState() {
         apiData: {},
         isAuthenticated: false,
         isAdmin: false,
+        userNotExist: false,
     }
 }
 

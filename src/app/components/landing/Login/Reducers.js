@@ -9,13 +9,15 @@ export default (state = getInitialLoginState(), action) => {
                 ...state,
                 apiData: action.apiData,
                 isAuthenticated: action.isAuthenticated,
-                isAdmin: action.isAdmin
+                isAdmin: action.isAdmin,
+                userNotExist: action.userNotExist,
             };
 
         case ACTION_TYPE.FETCH_LOGIN_ERROR:
             return {
                 ...state,
                 isAuthenticated: action.isAuthenticated,
+                userNotExist: action.userNotExist,
             };
 
         case ACTION_TYPE.FETCH_LOGOUT_SUCCESS:

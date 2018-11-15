@@ -14,7 +14,7 @@ class Login extends Component {
         return (
             <div className='login-section'>
                 <Logo />
-                <LoginForm />
+                <LoginForm />s
                 <Loader />
             </div>
         );

@@ -41,7 +41,8 @@ class LoginForm extends Component {
     };
 
     render() {
-        const { name, pswd, enterUserAndName } = this.state;
+        const { login: { userNotExist } } = this.props;
+        let { name, pswd, enterUserAndName } = this.state;
 
         return (
             <div className='login-form-section'>
@@ -88,13 +89,26 @@ class LoginForm extends Component {
                         : ''
                 }
 
+                {
+                    userNotExist
+                        ? (
+                            <NoResultFound
+                                cssClassName='warning'
+                                message={ ERROR_MESSAGE.USER_NOT_EXIST }
+                            />
+                        )
+                        : ''
+                }
+
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    return { };
+    return {
+        login: state.login
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
