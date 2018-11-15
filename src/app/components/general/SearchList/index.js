@@ -1,35 +1,42 @@
 import React from 'react';
 
 const setPopulation = (population) => {
-    if (population <= 100000) { //1 Lac
+    population = parseInt(population);
+
+    // less than or equal 1 lac
+    if (population <= 100000) {
         return {
-            width: population / 100,
-            backgroundColor: 'rgb(9, 253, 9)',
+            width: '16.66%'
         }
-    } else if (population <= 1000000) {      //10 Lac
+    }
+    // less than or equal 10 lac
+    else if (population <= 1000000) {
         return {
-            width: population / 1000,
-            backgroundColor: '#07ce07',
+            width: '33.33%'
         }
-    } else if (population <= 100000000) {    //10 Crore
+    }
+    // less than or equal 10 Crore
+    else if (population <= 100000000) {
         return {
-            width: population / 100000,
-            backgroundColor: '#008000',
+            width: '50%'
         }
-    } else if (population <= 10000000000) {  //1000 Crore
+    }
+    // less than or equal 1000 Crore
+    else if (population <= 10000000000) {
         return {
-            width: population / 10000000,
-            backgroundColor: '#ffff00',
+            width: '66.66%'
         }
-    } else if (population <= 1000000000000) { //100000 Crore
+    }
+    // less than or equal 100000 Crore
+    else if (population <= 1000000000000) {
         return {
-            width: population / 1000000000,
-            backgroundColor: '#ff0000',
+            width: '83.33%'
         }
-    } else {                                 //unknown
+    }
+    // unknown
+    else {
         return {
-            width: '100%',
-            backgroundColor: '#000000',
+            width: '100%'
         }
     }
 };
@@ -46,13 +53,15 @@ const createList = (list, index) => {
     )
 };
 
-const SearchList = ({lists}) => {
+const SearchList = ({lists, isSearched}) => {
     return (
         <ul className='search-list-section'>
             {
-                lists && lists.length
+                isSearched
+                    ? lists && lists.length > 0
                     ? lists.map(createList)
                     : <li>No result found</li>
+                    : ''
             }
         </ul>
     );

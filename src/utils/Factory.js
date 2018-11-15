@@ -19,6 +19,7 @@ export function getInitialLoginState() {
 // Function to get Initial Search State
 export function getInitialSearchState() {
     return {
-        apiData: []
+        apiData: [],
+        isSearched: false
     }
 }

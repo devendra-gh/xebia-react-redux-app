@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import { fetchSearch, clearSearchData } from './Actions';
 import Loader from '../../general/Loader';
 import TextInputField from '../../general/TextInputField';
-import PopulationInfo from '../../general/PopulationInfo';
 import SearchList from '../../general/SearchList';
 
 class Search extends Component {
@@ -68,7 +67,7 @@ class Search extends Component {
 
 
     render() {
-        const { search: { apiData } } = this.props;
+        const { search: { apiData, isSearched } } = this.props;
 
         return (
             <Fragment>
@@ -78,11 +77,11 @@ class Search extends Component {
                         onKeyUpHandler={ this.searchHandler }
                         cssClassName='form-control'
                         placeholder='Search...'
+                        autoFocus={true}
                     />
-                    <PopulationInfo />
                 </div>
                 <Loader/>
-                <SearchList lists={ apiData } />
+                <SearchList lists={ apiData } isSearched={ isSearched } />
             </Fragment>
         );
     }

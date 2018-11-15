@@ -4,9 +4,9 @@ import login from '../app/components/landing/Login/Reducers';
 import search from './components/landing/Search/Reducers';
 
 const rootReducer = combineReducers({
-    loader: loader,
-    login: login,
-    search: search,
+    loader,
+    login,
+    search,
 });
 
 export default rootReducer;

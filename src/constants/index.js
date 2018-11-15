@@ -19,6 +19,6 @@ export const ACTION_TYPE = {
 };
 
 export const ERROR_MESSAGE = {
-    ENTER_USER_AND_PASSWORD: 'Please Enter Username and Password',
-    USER_NOT_EXIST: 'User does not exist',
+    ENTER_USER_AND_PASSWORD: 'Please Enter Username and Password.',
+    USER_NOT_EXIST: 'User does not exist.',
 };

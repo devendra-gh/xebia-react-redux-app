@@ -7,7 +7,8 @@ export default (state = getInitialSearchState(), action) => {
         case ACTION_TYPE.FETCH_SEARCH_SUCCESS:
             return {
                 ...state,
-                apiData: action.data
+                apiData: action.data,
+                isSearched: true,
             };
 
         case ACTION_TYPE.CLEAR_SEARCH:

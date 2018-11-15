@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { fetchLogin } from '../../landing/Login/Actions';
+import { fetchLogin, fetchLoginError } from '../../landing/Login/Actions';
 import { ERROR_MESSAGE } from '../../../../constants';
+import FormGroup from '../../general/FormGroup';
 import TextInputField from '../../general/TextInputField';
 import Button from '../Button';
 import NoResultFound from '../../general/NoResultFound';
@@ -31,12 +32,17 @@ class LoginForm extends Component {
 
         if (name && pswd) {
 
+            this.setState({
+                enterUserAndName: false
+            });
             this.props.fetchLogin(name, pswd);
+
         } else {
 
             this.setState({
                 enterUserAndName: true
-            })
+            });
+            this.props.fetchLoginError();
         }
     };
 
@@ -47,7 +53,7 @@ class LoginForm extends Component {
         return (
             <div className='login-form-section'>
 
-                <div className='form-group'>
+                <FormGroup cssClassName='form-group'>
                     <TextInputField
                         type='text'
                         name='name'
@@ -57,9 +63,8 @@ class LoginForm extends Component {
                         cssClassName='form-control'
                         autoFocus={true}
                     />
-                </div>
-
-                <div className='form-group'>
+                </FormGroup>
+                <FormGroup cssClassName='form-group'>
                     <TextInputField
                         type='password'
                         name='pswd'
@@ -68,15 +73,14 @@ class LoginForm extends Component {
                         placeholder='Password'
                         cssClassName='form-control'
                     />
-                </div>
-
-                <div className='form-group'>
+                </FormGroup>
+                <FormGroup cssClassName='form-group'>
                     <Button
                         onClickHandler={ this.fetchLoginHandler }
                         label={'Login'}
                         cssClassName='btn-action'
                     />
-                </div>
+                </FormGroup>
 
                 {
                     enterUserAndName
@@ -115,6 +119,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchLogin: (data) => {
             dispatch(fetchLogin(data))
+        },
+        fetchLoginError: () => {
+            dispatch(fetchLoginError())
         }
     };
 };

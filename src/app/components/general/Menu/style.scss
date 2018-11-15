@@ -1,13 +1,12 @@
 .menu {
   float: left;
-}
-.menu li {
-  float: left;
-}
-
-.menu li a {
-  padding: 4px 10px;
-  display: block;
-  font-size: 14px;
-  color: #ffffff;
+  li {
+    float: left;
+    a {
+      padding: 4px 10px;
+      display: block;
+      font-size: 14px;
+      color: #ffffff;
+    }
+  }
 }
