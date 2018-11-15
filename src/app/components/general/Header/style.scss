@@ -1,0 +1,15 @@
+header {
+  padding: 15px 15px;
+  background-color: $primary-color;
+}
+
+.logo {
+  float: left;
+  width: 100px;
+  color: $white-color;
+  font-size: $large-font-size;
+
+  &:hover, &:focus {
+    color: $white-color;
+  }
+}

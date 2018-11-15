@@ -1,0 +1,14 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  overflow-y: scroll;
+  height: 100%;
+  font-family: Verdana, sans-serif;
+  font-size: $default-font-size;
+  line-height: 1.42857143;
+  color: #666666;
+  background-color: $white-color;
+}

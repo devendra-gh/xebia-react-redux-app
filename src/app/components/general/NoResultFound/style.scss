@@ -1,0 +1,19 @@
+.no-result-found-section {
+  position: relative;
+  margin-top: 4px;
+  margin-bottom: 40px;
+  min-height: 50px;
+  color: $gray-color;
+  background-color: rgba($concrete-color, 0.8);
+
+  &.warning {
+    color: $white-color;
+    background-color: $error-color;
+  }
+  .no-result-text {
+    padding: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: $font-weight-regular;
+  }
+}

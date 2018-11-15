@@ -1,0 +1,16 @@
+//Common Styles
+@import 'assets/index';
+@import 'assets/buttons';
+@import 'assets/formFields';
+@import 'common';
+
+//Global Component Styles
+@import "../app/components/general/Header/style";
+@import "../app/components/general/Menu/style";
+@import "../app/components/general/Logo/style";
+@import "../app/components/general/Loader/style";
+@import "../app/components/general/NoResultFound/style";
+
+//Landing Component Styles
+@import "../app/components/landing/Login/style";
+@import "../app/components/landing/Search/style";
